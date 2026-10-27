@@ -16,9 +16,13 @@ variable "common_resource_groups" {
   }))
   nullable = false
   default = {
-    common = { enabled = true, labs = "2-11" } # zasoby wspólne, trwałe
+    common     = { enabled = true, labs = "1-10" } # zasoby wspólne, trwałe
+    basic      = { enabled = true, labs = "1-3" }
+    function   = { enabled = true, labs = "4-5" }
+    vm         = { enabled = true, labs = "6-7" }
+    advanced   = { enabled = true, labs = "7-9" }
+    industry40 = { enabled = true, labs = "10" }
 
-    # TODO: Dodaj pozostałe grupy zasobów (krok 1)
   }
   validation {
     condition     = try(var.common_resource_groups["common"].enabled, false)
@@ -54,7 +58,7 @@ variable "create_sops_key" {
   EOT
   type        = bool
   nullable    = false
-  default     = false
+  default     = true
 }
 
 # Opcjonalne: objectId principal-a (np. użytkownika `devops` -- część opcjonalna labu), któremu
@@ -76,7 +80,7 @@ variable "contact_emails" {
   raz w powłoce (Laboratorium 2), np.:
   export TF_VAR_contact_emails='["imie.nazwisko@student.pk.edu.pl","drugi.adres@example.com"]'
   EOT
-  default     = ["imie.nazwisko@student.pk.edu.pl", "drugi.adres@example.com"]
+  default     = ["mateusz.rozek@student.pk.edu.pl"]
   type        = list(string)
   nullable    = false
   validation {
