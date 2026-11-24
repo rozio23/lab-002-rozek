@@ -64,6 +64,7 @@ locals {
     id_pull = "id-acrpull-${local.yy}"
     gallery = "gal_labs_${local.yy}" # snake_case: galeria nie dopuszcza '-'
     log     = "log-common-${local.yy}"
+    image_base = "img-lab007-base"
   }
 }
 
